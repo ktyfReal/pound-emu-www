@@ -5,10 +5,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Experiments | Pound Emulator</title>
   <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 <body>
   <header class="glass-header">
-    <a href="/" class="logo-link"><img src="../assets/pound.png" alt="Logo" class="header-logo"></a>
+    <a href="../index.html" class="logo-link">
+      <img src="../assets/pound.png" alt="Pound Logo" class="header-logo" />
+    </a>
+    <div class="header-icons">
+      <div class="dropdown">
+        <button id="dropdownBtn" class="dropbtn">
+          TEMP_LABEL <i class="bi bi-caret-right-fill"></i>
+        </button>
+        <div id="dropdownContent" class="dropdown-content glass-dropdown">
+          <a href="../overview/index.html">Overview</a>
+          <a href="../docs/index.html">Docs</a>
+          <a href="../experiments/index.html">Experiments</a>
+          <a href="./quantum-computing/index.html">Quantum Computing</a>
+        </div>
+      </div>
+      <a href="https://discord.gg/aMmTmKsVC7" target="_blank" class="icon-link">
+        <i class="bi bi-discord"></i>
+      </a>
+      <a href="https://github.com/pound-emu/pound" target="_blank" class="icon-link">
+        <i class="bi bi-github"></i>
+      </a>
+    </div>
   </header>
   <div class="bg">
     <div class="glass-card">
@@ -16,5 +38,30 @@
       <p>This is where we’ll throw untested ideas, raw tests, and random emulator features that may or may not work.</p>
     </div>
   </div>
+
+  <script>
+    const btn = document.getElementById('dropdownBtn');
+    const content = document.getElementById('dropdownContent');
+    const icon = btn.querySelector('i');
+
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation(); // prevent click bubbling to document
+      content.classList.toggle('active');
+
+      if (content.classList.contains('active')) {
+        icon.style.transform = 'rotate(90deg)';
+      } else {
+        icon.style.transform = 'rotate(0deg)';
+      }
+    });
+
+    // Close dropdown if clicking outside
+    document.addEventListener('click', (e) => {
+      if (content.classList.contains('active')) {
+        content.classList.remove('active');
+        icon.style.transform = 'rotate(0deg)';
+      }
+    });
+  </script>
 </body>
 </html>
